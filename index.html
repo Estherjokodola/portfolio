@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jokodola Esther — AI Researcher & ML Engineer</title>
+<meta name="description" content="Portfolio of Jokodola Esther — AI Researcher and Machine Learning Engineer specialising in healthcare AI, medical imaging, and bioinformatics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --serif: 'DM Serif Display', serif;
+    --sans: 'Outfit', sans-serif;
+    --mono: 'DM Mono', monospace;
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --surface2: #f0efe9;
+    --ink: #1a1a18;
+    --ink2: #4a4a46;
+    --ink3: #888780;
+    --border: rgba(26,26,24,0.1);
+    --border-md: rgba(26,26,24,0.18);
+    --accent: #1D9E75;
+    --accent-dark: #085041;
+    --accent-light: #E1F5EE;
+    --accent-mid: #0F6E56;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(247,246,242,0.85);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-logo em { font-style: italic; color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink2);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 12px;
+    border: 0.5px solid var(--accent);
+    color: var(--accent);
+    border-radius: 100px;
+    padding: 6px 16px;
+    text-decoration: none;
+    transition: background .15s;
+  }
+  .nav-cta:hover { background: var(--accent-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-content { max-width: 680px; }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 10px;
+    opacity: 0;
+    animation: fadeUp .6s .1s ease forwards;
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.35} }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 88px);
+    line-height: 1.02;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp .65s .2s ease forwards;
+  }
+  .hero-name em { font-style: italic; color: var(--accent); }
+
+  .hero-tagline {
+    font-size: 18px;
+    color: var(--ink2);
+    font-weight: 300;
+    line-height: 1.65;
+    max-width: 560px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp .65s .32s ease forwards;
+  }
+
+  .hero-links {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp .65s .44s ease forwards;
+  }
+  .link-chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; font-family: var(--mono);
+    color: var(--ink2);
+    border: 0.5px solid var(--border-md);
+    border-radius: 100px;
+    padding: 7px 16px;
+    text-decoration: none;
+    background: var(--surface);
+    transition: border-color .15s, color .15s;
+  }
+  .link-chip:hover { color: var(--accent); border-color: var(--accent); }
+  .link-chip i { font-size: 14px; }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 3rem; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink3);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollPulse 1.8s infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:.4}50%{opacity:1} }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  /* SECTIONS */
+  .section-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink3);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 0.5px;
+    background: var(--border);
+  }
+
+  /* EXPERIENCE */
+  .exp-grid { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 0.5px solid var(--border);
+    transition: background .15s;
+  }
+  .exp-item:first-child { padding-top: 0; }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-role { font-size: 17px; font-weight: 500; }
+  .exp-org { font-family: var(--mono); font-size: 13px; color: var(--accent); margin-top: 2px; }
+  .exp-date { font-family: var(--mono); font-size: 12px; color: var(--ink3); text-align: right; white-space: nowrap; padding-top: 4px; }
+  .exp-desc { grid-column: 1/-1; font-size: 15px; color: var(--ink2); line-height: 1.7; margin-top: 10px; }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .proj-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem 1.375rem;
+    text-decoration: none;
+    display: flex; flex-direction: column;
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+  }
+  .proj-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(29,158,117,.08);
+  }
+  .proj-tag {
+    display: inline-block;
+    font-size: 11px; font-family: var(--mono);
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    border-radius: 100px;
+    padding: 2px 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+  }
+  .proj-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.35; }
+  .proj-desc { font-size: 13px; color: var(--ink2); line-height: 1.6; flex: 1; }
+  .proj-link { font-family: var(--mono); font-size: 12px; color: var(--ink3); margin-top: 12px; }
+  .proj-featured { border-color: rgba(29,158,117,.25); background: linear-gradient(135deg, #fff 80%, #f0fdf8); }
+  .proj-featured:hover { border-color: var(--accent); box-shadow: 0 8px 28px rgba(29,158,117,.12); }
+
+  /* RESEARCH */
+  .research-list { display: flex; flex-direction: column; gap: 12px; }
+  .research-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    padding: 1.375rem 1.5rem;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .research-icon {
+    width: 42px; height: 42px; flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .research-icon i { font-size: 20px; color: var(--accent-dark); }
+  .research-title { font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.35; margin-bottom: 5px; }
+  .research-desc { font-size: 14px; color: var(--ink2); line-height: 1.65; }
+
+  /* SKILLS */
+  .skills-outer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .skill-group {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.125rem;
+  }
+  .skill-group-name {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--ink3); margin-bottom: 10px;
+  }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .pill {
+    font-size: 12px; color: var(--ink2);
+    border: 0.5px solid var(--border-md);
+    border-radius: 100px;
+    padding: 3px 10px;
+    background: var(--bg);
+  }
+
+  /* EDUCATION */
+  .edu-list { display: flex; flex-direction: column; gap: 0; }
+  .edu-item {
+    padding: 1.75rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .edu-item:first-child { padding-top: 0; }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+  .edu-degree { font-size: 17px; font-weight: 500; }
+  .edu-date { font-family: var(--mono); font-size: 12px; color: var(--ink3); }
+  .edu-school { font-size: 14px; color: var(--ink2); }
+  .gpa-badge {
+    display: inline-block;
+    background: var(--accent-light); color: var(--accent-dark);
+    font-size: 12px; font-family: var(--mono);
+    border-radius: 100px; padding: 2px 10px; margin-left: 10px;
+  }
+
+  /* CERTS */
+  .cert-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .cert-list li {
+    font-size: 15px; color: var(--ink2);
+    display: flex; align-items: flex-start; gap: 12px; line-height: 1.6;
+  }
+  .cert-list li::before {
+    content: ''; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--accent);
+    flex-shrink: 0; margin-top: 9px;
+  }
+
+  /* CONTACT / FOOTER */
+  footer {
+    background: var(--ink);
+    color: #f0efe9;
+    padding: 4rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: #f0efe9;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .footer-name em { font-style: italic; color: var(--accent); }
+  .footer-subtitle { font-size: 14px; color: rgba(240,239,233,.55); font-weight: 300; line-height: 1.65; max-width: 380px; }
+  .footer-right { display: flex; flex-direction: column; gap: 20px; }
+  .contact-row { display: flex; align-items: center; gap: 12px; }
+  .contact-row i { font-size: 18px; color: var(--accent); }
+  .contact-row a, .contact-row span {
+    font-size: 14px; color: rgba(240,239,233,.8);
+    text-decoration: none;
+  }
+  .contact-row a:hover { color: var(--accent); }
+  .footer-bottom {
+    max-width: 1100px; margin: 3rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid rgba(240,239,233,.1);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { font-family: var(--mono); font-size: 11px; color: rgba(240,239,233,.3); letter-spacing: .06em; }
+
+  /* SECTION BG ALTERNATE */
+  .bg-surface { background: var(--surface2); }
+
+  /* DIVIDER */
+  .section-divider { border: none; border-top: 0.5px solid var(--border); margin: 0; }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .55s ease, transform .55s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 700px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 90px 1.25rem 5rem; min-height: 100svh; }
+    .section-wrap { padding: 3.5rem 1.25rem; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Esther <em>Jokodola</em></a>
+  <ul class="nav-links">
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#research">research</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+  <a href="mailto:estherjokodola21@gmail.com" class="nav-cta">get in touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">
+      <span class="status-dot"></span> available for collaboration
+    </p>
+    <h1 class="hero-name">
+      Jokodola<br><em>Esther</em>
+    </h1>
+    <p class="hero-tagline">
+      AI Researcher & Machine Learning Engineer — applying deep learning to healthcare, medical imaging, and bioinformatics. Currently pursuing an MSc in Artificial Intelligence at the University of Ibadan.
+    </p>
+    <div class="hero-links">
+      <a class="link-chip" href="https://github.com/Estherjokodola" target="_blank" rel="noopener">
+        <i class="ti ti-brand-github"></i> GitHub
+      </a>
+      <a class="link-chip" href="https://www.linkedin.com/in/esther-jokodola/" target="_blank" rel="noopener">
+        <i class="ti ti-brand-linkedin"></i> LinkedIn
+      </a>
+      <a class="link-chip" href="https://www.kaggle.com/Estherjokodola" target="_blank" rel="noopener">
+        <i class="ti ti-chart-line"></i> Kaggle
+      </a>
+      <a class="link-chip" href="mailto:estherjokodola21@gmail.com">
+        <i class="ti ti-mail"></i> Email
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="bg-surface">
+  <div class="section-wrap">
+    <p class="section-label reveal">Experience</p>
+    <div class="exp-grid">
+
+      <div class="exp-item reveal">
+        <div>
+          <p class="exp-role">Machine Learning Instructor</p>
+          <p class="exp-org">New Horizons</p>
+        </div>
+        <p class="exp-date">Mar 2026 – Present</p>
+        <p class="exp-desc">Teaching hands-on ML and deep learning — classification, regression, computer vision, and NLP — guiding students through full project pipelines from raw data to deployment. Designed and delivered practical curricula ensuring students build real, working projects.</p>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <p class="exp-role">Freelance Machine Learning Engineer</p>
+          <p class="exp-org">Independent</p>
+        </div>
+        <p class="exp-date">Apr 2024 – Present</p>
+        <p class="exp-desc">End-to-end ML pipelines for healthcare, finance, and biomedical research clients — from preprocessing and feature engineering to model training and cloud deployment. Applied CNNs, Random Forests, Gradient Boosting, and Transformer architectures across diverse datasets.</p>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <p class="exp-role">AI Research Trainee</p>
+          <p class="exp-org">DATICAN</p>
+        </div>
+        <p class="exp-date">Nov 2025 – Present</p>
+        <p class="exp-desc">Active training in computer vision and data science — brain segmentation, skin cancer detection, and medical imaging problems. Writing research papers, building data pipelines for experiments, and contributing to systematic reviews.</p>
+      </div>
+
+      <div class="exp-item reveal">
+        <div>
+          <p class="exp-role">IT Support Specialist (NYSC)</p>
+          <p class="exp-org">Nigerian Army</p>
+        </div>
+        <p class="exp-date">Nov 2023 – Oct 2024</p>
+        <p class="exp-desc">Provided technical support for enterprise IT systems and infrastructure during national service.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <p class="section-label reveal">Selected Projects</p>
+
+    <!-- TOP 5 FEATURED -->
+    <p style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;" class="reveal">Featured</p>
+    <div class="projects-grid projects-top5" style="margin-bottom:2.5rem;">
+
+      <a class="proj-card proj-featured reveal" href="https://github.com/Estherjokodola/melanoma-metastasis-prediction" target="_blank" rel="noopener">
+        <span class="proj-tag">Genomics</span>
+        <p class="proj-name">Melanoma Metastasis Prediction</p>
+        <p class="proj-desc">Built a machine learning model to predict whether melanoma will metastasise using gene expression profiles from The Cancer Genome Atlas (TCGA). Involved extensive feature selection, dimensionality reduction, and evaluation across multiple classifiers to identify the most predictive genomic signatures.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card proj-featured reveal" href="https://github.com/Estherjokodola/Variant_effect_prediction" target="_blank" rel="noopener">
+        <span class="proj-tag">Genomics</span>
+        <p class="proj-name">Variant Effect Prediction</p>
+        <p class="proj-desc">Developed ML models to predict the functional impact of single-nucleotide variants in the genome — whether a mutation is benign or pathogenic. Used sequence-based features and benchmarked multiple approaches to assess variant deleteriousness.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card proj-featured reveal" href="https://github.com/Estherjokodola/Variant-Prediction-using-DNA-Sequence" target="_blank" rel="noopener">
+        <span class="proj-tag">Genomics</span>
+        <p class="proj-name">Variant Prediction from DNA Sequence</p>
+        <p class="proj-desc">Predicted genetic variants directly from raw DNA sequence data using deep learning. The model learns sequence-level patterns to flag mutation-prone regions, bridging bioinformatics and neural network approaches for genomic variant discovery.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card proj-featured reveal" href="https://github.com/Estherjokodola/3D-Brain-MRI-Segmentation-using-3D-U-Net" target="_blank" rel="noopener">
+        <span class="proj-tag">Medical Imaging</span>
+        <p class="proj-name">3D Brain MRI Segmentation</p>
+        <p class="proj-desc">Implemented a 3D U-Net architecture for automatic segmentation of brain structures and tumours from multi-modal MRI scans. Integrated neuroscience domain knowledge with deep learning to support clinical neuroimaging workflows and improve diagnostic precision.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card proj-featured reveal" href="https://github.com/Estherjokodola/Skin_Cancer_Detection" target="_blank" rel="noopener">
+        <span class="proj-tag">Computer Vision</span>
+        <p class="proj-name">Skin Cancer Detection</p>
+        <p class="proj-desc">Fine-tuned ResNet and MobileNetV2 on the HAM10000 dermatoscopy dataset to classify benign vs malignant skin lesions. Built robust image preprocessing pipelines and evaluated model performance across skin tone variations to support equitable diagnosis.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+    </div>
+
+    <!-- MORE PROJECTS -->
+    <p style="font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;" class="reveal">More projects</p>
+    <div class="projects-grid">
+
+      <a class="proj-card reveal" href="https://github.com/Estherjokodola/Semantic-Segmentation-System" target="_blank" rel="noopener">
+        <span class="proj-tag">AWS SageMaker</span>
+        <p class="proj-name">Semantic Segmentation System</p>
+        <p class="proj-desc">Python pipeline for pixel-level image segmentation deployed on AWS SageMaker, generating segmented masks efficiently at scale.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card reveal" href="https://github.com/Estherjokodola/Toxic-Comment-Detection" target="_blank" rel="noopener">
+        <span class="proj-tag">NLP</span>
+        <p class="proj-name">Toxic Comment Classifier</p>
+        <p class="proj-desc">1D CNN pipeline for detecting toxic comments in text, classifying into toxic and non-toxic categories with confidence scoring.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card reveal" href="https://github.com/Estherjokodola/MultiModel-Object-Detection" target="_blank" rel="noopener">
+        <span class="proj-tag">Object Detection</span>
+        <p class="proj-name">Multi-Model Object Detection</p>
+        <p class="proj-desc">TensorFlow pipeline with SSD, Faster R-CNN, and RFCNN for annotating images, video streams, and real-time webcam input.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card reveal" href="https://github.com/Estherjokodola/Medical-Recommendation-System" target="_blank" rel="noopener">
+        <span class="proj-tag">Healthcare AI</span>
+        <p class="proj-name">Medical Recommendation System</p>
+        <p class="proj-desc">Flask web app using scikit-learn to identify medical conditions from symptoms and recommend diets, treatments, or doctor visits.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card reveal" href="https://github.com/Estherjokodola/Sentiment-Analysis-on-Consumer-Reviews" target="_blank" rel="noopener">
+        <span class="proj-tag">NLP</span>
+        <p class="proj-name">Sentiment Analysis — Consumer Reviews</p>
+        <p class="proj-desc">Comparing VADER and RoBERTa on review data — contrasting a rule-based approach with a powerful transformer model.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card reveal" href="https://github.com/Estherjokodola/Herb-Detection-System" target="_blank" rel="noopener">
+        <span class="proj-tag">Computer Vision</span>
+        <p class="proj-name">Herb Detection System</p>
+        <p class="proj-desc">EfficientDet-powered pipeline for detecting and identifying herbs in images with bounding boxes and confidence scores.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card reveal" href="https://github.com/Estherjokodola/Sales-Forecast" target="_blank" rel="noopener">
+        <span class="proj-tag">Forecasting</span>
+        <p class="proj-name">Sales Forecast</p>
+        <p class="proj-desc">Predicting future sales to support inventory management, marketing strategies, and resource allocation decisions.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+      <a class="proj-card reveal" href="https://github.com/Estherjokodola/Chatbot" target="_blank" rel="noopener">
+        <span class="proj-tag">Deep Learning</span>
+        <p class="proj-name">Neural Network Chatbot</p>
+        <p class="proj-desc">PyTorch chatbot built from scratch using intent classification with NLTK tokenization and bag-of-words encoding.</p>
+        <p class="proj-link">github ↗</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- RESEARCH -->
+<section id="research" class="bg-surface">
+  <div class="section-wrap">
+    <p class="section-label reveal">Research in Progress</p>
+    <div class="research-list">
+
+      <div class="research-card reveal">
+        <div class="research-icon"><i class="ti ti-dna"></i></div>
+        <div>
+          <p class="research-title">Automated Detection of Skin Cancer in Dark Skin Populations Using a Hybrid CNN-Transformer Framework</p>
+          <p class="research-desc">Deep learning research integrating image-based medical and clinical data for improved diagnostic accuracy — addressing a critical gap in dermatology AI where existing models perform poorly on darker skin tones.</p>
+        </div>
+      </div>
+
+      <div class="research-card reveal">
+        <div class="research-icon"><i class="ti ti-brain"></i></div>
+        <div>
+          <p class="research-title">Automated Detection of Dermatological Conditions in Dark Skin Populations Using a Hybrid CNN-Transformer Framework</p>
+          <p class="research-desc">AI research focused on automated detection of multiple skin conditions with clinical and biomedical relevance, combining computer vision techniques with neuroscience data analysis methods.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <p class="section-label reveal">Technical Skills</p>
+    <div class="skills-outer">
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">Languages</p>
+        <div class="skill-pills">
+          <span class="pill">Python</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Java</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">ML Frameworks</p>
+        <div class="skill-pills">
+          <span class="pill">PyTorch</span>
+          <span class="pill">TensorFlow</span>
+          <span class="pill">Keras</span>
+          <span class="pill">scikit-learn</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">Computer Vision</p>
+        <div class="skill-pills">
+          <span class="pill">OpenCV</span>
+          <span class="pill">Object Detection</span>
+          <span class="pill">Segmentation</span>
+          <span class="pill">Medical Imaging</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">NLP</p>
+        <div class="skill-pills">
+          <span class="pill">Transformers</span>
+          <span class="pill">NLTK</span>
+          <span class="pill">RoBERTa</span>
+          <span class="pill">Sentiment Analysis</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">Bioinformatics</p>
+        <div class="skill-pills">
+          <span class="pill">Genomics</span>
+          <span class="pill">Neuroimaging</span>
+          <span class="pill">MNE-Python</span>
+          <span class="pill">PyMOL</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">Deployment & MLOps</p>
+        <div class="skill-pills">
+          <span class="pill">Docker</span>
+          <span class="pill">AWS</span>
+          <span class="pill">GCP</span>
+          <span class="pill">MLOps</span>
+          <span class="pill">Flask</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">Data & Tools</p>
+        <div class="skill-pills">
+          <span class="pill">Pandas</span>
+          <span class="pill">NumPy</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Git</span>
+          <span class="pill">Linux</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">ML Techniques</p>
+        <div class="skill-pills">
+          <span class="pill">CNNs</span>
+          <span class="pill">Transfer Learning</span>
+          <span class="pill">U-Net</span>
+          <span class="pill">Random Forests</span>
+          <span class="pill">Gradient Boosting</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- EDUCATION & CERTS -->
+<section class="bg-surface">
+  <div class="section-wrap">
+    <p class="section-label reveal">Education</p>
+    <div class="edu-list">
+      <div class="edu-item reveal">
+        <div class="edu-row">
+          <p class="edu-degree">MSc Artificial Intelligence</p>
+          <p class="edu-date">2025 – 2026</p>
+        </div>
+        <p class="edu-school">University of Ibadan</p>
+      </div>
+      <div class="edu-item reveal">
+        <div class="edu-row">
+          <p class="edu-degree">BSc Computer Science <span class="gpa-badge">GPA 4.7 / 5.0</span></p>
+          <p class="edu-date">2019 – 2023</p>
+        </div>
+        <p class="edu-school">Koladaisi University</p>
+      </div>
+    </div>
+
+    <p class="section-label reveal" style="margin-top: 3.5rem;">Certifications & Recognition</p>
+    <ul class="cert-list">
+      <li class="reveal">NICRAT ICW Conference 2025 — Abstract presentation on skin cancer detection using deep learning</li>
+      <li class="reveal">PyTorch for Deep Learning Bootcamp — Neural networks and computer vision</li>
+      <li class="reveal">Google Data Analytics Professional Certificate</li>
+      <li class="reveal">AI / ML / Data Science Bootcamp</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-name">Jokodola<br><em>Esther</em></p>
+      <p class="footer-subtitle">AI Researcher & Machine Learning Engineer focused on healthcare AI and bioinformatics. Open to research collaborations, freelance projects, and speaking opportunities.</p>
+    </div>
+    <div class="footer-right">
+      <div class="contact-row">
+        <i class="ti ti-mail"></i>
+        <a href="mailto:estherjokodola21@gmail.com">estherjokodola21@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <i class="ti ti-phone"></i>
+        <span>+234 907 214 5374</span>
+      </div>
+      <div class="contact-row">
+        <i class="ti ti-brand-github"></i>
+        <a href="https://github.com/Estherjokodola" target="_blank" rel="noopener">github.com/Estherjokodola</a>
+      </div>
+      <div class="contact-row">
+        <i class="ti ti-brand-linkedin"></i>
+        <a href="https://www.linkedin.com/in/esther-jokodola/" target="_blank" rel="noopener">linkedin.com/in/esther-jokodola</a>
+      </div>
+      <div class="contact-row">
+        <i class="ti ti-chart-line"></i>
+        <a href="https://www.kaggle.com/Estherjokodola" target="_blank" rel="noopener">kaggle.com/Estherjokodola</a>
+      </div>
+      <div class="contact-row">
+        <i class="ti ti-map-pin"></i>
+        <span>Ibadan, Nigeria</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Jokodola Esther Oluwatosin</p>
+    <p>AI Researcher · ML Engineer · Ibadan, Nigeria</p>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
